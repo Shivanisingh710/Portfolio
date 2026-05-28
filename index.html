@@ -458,7 +458,41 @@
             border-color: var(--primary-color);
             box-shadow: 0 10px 25px rgba(79, 70, 229, 0.1);
         }
+        /* Excel Dropdown */
+        .skill-dropdown {
+        position: relative;
+        }
 
+       .dropdown-content {
+       position: absolute;
+       top: 110%;
+       left: 50%;
+       transform: translateX(-50%);
+       background: var(--card-bg);
+       border: 1px solid var(--border-color);
+       border-radius: 12px;
+       min-width: 280px;
+       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+       display: none;
+       z-index: 100;
+       overflow: hidden;
+       }
+
+      .dropdown-content a {
+      display: block;
+      padding: 14px 18px;
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+      }
+
+      .dropdown-content a:hover {
+       background: var(--primary-light);
+       }
+
+       .skill-dropdown:hover .dropdown-content {
+       display: block;
+        }
         /* Footer Section */
         footer {
             border-top: 1px solid var(--border-color);
