@@ -1,839 +1,537 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shivani Singh | Data Analyst Portfolio</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-color: #0f172a;
-            --text-muted: #475569;
-            --primary-color: #4f46e5;
-            --primary-light: #e0e7ff;
-            --primary-hover: #4338ca;
-            --border-color: #e2e8f0;
-            --shadow-color: rgba(79, 70, 229, 0.06);
-            --gradient-accent: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
-            --transition-speed: 0.3s;
-        }
-
-        [data-theme="dark"] {
-            --bg-color: #090d16;
-            --card-bg: #111827;
-            --text-color: #f8fafc;
-            --text-muted: #94a3b8;
-            --primary-color: #6366f1;
-            --primary-light: #1e1b4b;
-            --primary-hover: #818cf8;
-            --border-color: #1f2937;
-            --shadow-color: rgba(0, 0, 0, 0.4);
-            --gradient-accent: linear-gradient(135deg, #6366f1 0%, #22d3ee 100%);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            transition: background-color var(--transition-speed), color var(--transition-speed);
-        }
-
-        h1, h2, h3, .logo {
-            font-family: 'Outfit', sans-serif;
-        }
-
-        /* Glassmorphism Navigation */
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-color);
-            transition: background-color var(--transition-speed), border-color var(--transition-speed);
-        }
-
-        [data-theme="dark"] nav {
-            background-color: rgba(9, 13, 22, 0.8);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: var(--gradient-accent);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-decoration: none;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: color var(--transition-speed);
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .theme-toggle-btn {
-            background: none;
-            border: none;
-            color: var(--text-color);
-            cursor: pointer;
-            font-size: 1.2rem;
-            padding: 0.5rem;
-            border-radius: 50%;
-            transition: background-color var(--transition-speed), transform var(--transition-speed);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .theme-toggle-btn:hover {
-            background-color: var(--primary-light);
-            transform: scale(1.1);
-        }
-
-        /* Hero / First Page Section */
-        header {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 6rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 4rem;
-            min-height: calc(100vh - 80px);
-        }
-
-        .hero-content {
-            flex: 1.2;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 0.5rem;
-            letter-spacing: -1px;
-        }
-
-        .hero-subtitle {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            background: var(--gradient-accent);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
-
-        .hero-text {
-            color: var(--text-muted);
-            font-size: 1.15rem;
-            margin-bottom: 2.5rem;
-            max-width: 550px;
-        }
-
-        /* Social buttons styled as interactive tags */
-        .social-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.8rem 1.6rem;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: all var(--transition-speed);
-            cursor: pointer;
-            border: 1.5px solid transparent;
-        }
-
-        .btn-linkedin {
-            background-color: #0077b5;
-            color: white;
-        }
-
-        .btn-linkedin:hover {
-            background-color: #005582;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(0, 119, 181, 0.3);
-        }
-
-        .btn-github {
-            background-color: #24292e;
-            color: white;
-        }
-
-        [data-theme="dark"] .btn-github {
-            background-color: #1f2937;
-            border: 1.5px solid var(--border-color);
-        }
-
-        .btn-github:hover {
-            background-color: #000000;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-email {
-            background-color: var(--primary-light);
-            color: var(--primary-color);
-            border: 1.5px solid var(--primary-color);
-        }
-
-        .btn-email:hover {
-            background-color: var(--primary-color);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(79, 70, 229, 0.2);
-        }
-
-        .hero-image-container {
-            flex: 0.8;
-            display: flex;
-            justify-content: center;
-        }
-
-        .hero-image {
-            width: 320px;
-            height: 320px;
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            overflow: hidden;
-            box-shadow: 0 20px 40px var(--shadow-color);
-            background: var(--gradient-accent);
-            animation: morphing 8s infinite ease-in-out;
-            border: 4px solid var(--card-bg);
-            transition: border var(--transition-speed);
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        @keyframes morphing {
-            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-            50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
-            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-        }
-
-        /* Generic Container setup */
-        .section-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 6rem 2rem;
-        }
-
-        .section-title {
-            font-size: 2.25rem;
-            font-weight: 800;
-            margin-bottom: 3rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .section-title::after {
-            content: '';
-            flex-grow: 1;
-            height: 1.5px;
-            background-color: var(--border-color);
-        }
-
-        /* About Section */
-        #about {
-            border-top: 1px solid var(--border-color);
-        }
-
-        .about-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 0 10px 30px var(--shadow-color);
-            transition: border-color var(--transition-speed);
-        }
-
-        .about-text {
-            color: var(--text-color);
-            font-size: 1.15rem;
-            line-height: 1.8;
-        }
-
-        /* Projects Section */
-        #projects {
-            border-top: 1px solid var(--border-color);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .project-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px var(--shadow-color);
-            transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(79, 70, 229, 0.1);
-            border-color: var(--primary-color);
-        }
-
-        .project-image {
-            height: 220px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.08);
-        }
-
-        .project-content {
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .project-title {
-            font-size: 1.35rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            line-height: 1.4;
-        }
-
-        .project-description {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 1.75rem;
-            flex-grow: 1;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.75rem;
-        }
-
-        .tag {
-            background-color: var(--bg-color);
-            border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            padding: 0.3rem 0.9rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            transition: all var(--transition-speed);
-        }
-
-        .project-card:hover .tag {
-            background-color: var(--primary-light);
-            color: var(--primary-color);
-            border-color: transparent;
-        }
-
-        .project-btn {
-            align-self: flex-start;
-            padding: 0.6rem 1.2rem;
-            font-size: 0.9rem;
-            border-radius: 50px;
-            background-color: transparent;
-            border: 1.5px solid var(--border-color);
-            color: var(--text-color);
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all var(--transition-speed);
-        }
-
-        .project-card:hover .project-btn {
-            background-color: var(--primary-color);
-            color: white;
-            border-color: transparent;
-        }
-
-        /* Skills Section */
-        #skills {
-            border-top: 1px solid var(--border-color);
-        }
-
-        .skills-grid {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .skill-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 1.5rem;
-            border-radius: 16px;
-            text-align: center;
-            font-weight: 700;
-            transition: all var(--transition-speed);
-            box-shadow: 0 4px 15px var(--shadow-color);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            justify-content: center;
-            width: 220px;
-            height: 140px;
-        }
-
-        .skill-card i {
-            font-size: 2rem;
-            background: var(--gradient-accent);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-color);
-            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.1);
-        }
-        /* Excel Dropdown */
-        .skill-dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-       .dropdown-content {
-           position: absolute;
-           top: 95%;
-           left: 0;
-           background: var(--card-bg);
-           border: 1px solid var(--border-color);
-           border-radius: 12px;
-           min-width: 280px;
-           box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-           display: none;
-           z-index: 100;
-           overflow: hidden;
-       }
-
-      .dropdown-content a {
-          display: block;
-          padding: 14px 18px;
-          text-decoration: none;
-          color: var(--text-color);
-          font-weight: 500;
-      }
-
-      .dropdown-content a:hover {
-          background: var(--primary-light);
-       }
-
-       .skill-dropdown:hover .dropdown-content {
-           display: block;
-        }
-        /* Footer Section */
-        footer {
-            border-top: 1px solid var(--border-color);
-            background-color: var(--card-bg);
-            padding: 5rem 2rem 3rem;
-            text-align: center;
-            transition: background-color var(--transition-speed);
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-title {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-
-        .footer-text {
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            font-size: 1.1rem;
-        }
-
-        .footer-socials {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .copyright {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border-color);
-            padding-top: 2.5rem;
-        }
-
-        /* Responsive Design Rules */
-        @media (max-width: 968px) {
-            header {
-                flex-direction: column-reverse;
-                text-align: center;
-                gap: 3rem;
-                padding-top: 4rem;
-                justify-content: center;
-            }
-
-            .hero-image {
-                width: 260px;
-                height: 260px;
-            }
-
-            .hero-title {
-                font-size: 2.75rem;
-            }
-
-            .hero-text {
-                margin: 0 auto 2.5rem;
-            }
-
-            .social-buttons {
-                justify-content: center;
-            }
-
-            .nav-links {
-                display: none; /* Can add a hamburger drawer if scaling up */
-            }
-        }
-
-        /* Reveal Animation on Scroll */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shivani Singh | Data Analyst Portfolio</title>
+  <meta name="description" content="Portfolio of Shivani Singh, a Data Analyst specializing in SQL, Python, Power BI, Advanced Excel, Machine Learning, Deep Learning, and Generative AI.">
+  <meta name="keywords" content="Shivani Singh, Data Analyst, Portfolio, SQL, Python, Power BI, Excel, Machine Learning, Deep Learning, Gen AI">
+  <meta name="author" content="Shivani Singh">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Shivani Singh | Data Analyst Portfolio">
+  <meta property="og:description" content="Translating complex database queries and corporate metrics into clear, visual intelligence that supports effective executive decisions.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="profilepic.jpg">
+
+  <!-- Google Fonts (Outfit & Plus Jakarta Sans from Reference Site) -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons (from Reference Site) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Navigation Header -->
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="logo">Shivani Singh</a>
-            <div class="nav-right">
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
-                    <i class="fa-solid fa-moon"></i>
-                </button>
-            </div>
+  <!-- Top Scroll Progress Bar -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Navigation Header (Glassmorphic) -->
+  <nav>
+    <div class="nav-container">
+      <a href="#home" class="logo">
+        <span>Shivani Singh</span><span class="logo-dot">.</span>
+      </a>
+
+      <div class="nav-right">
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li>
+            <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="nav-cta-resume" download="Shivani_Singh_Resume.pdf">
+              <i class="fa-solid fa-file-arrow-down"></i> Resume
+            </a>
+          </li>
+        </ul>
+
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Light/Dark Theme" title="Toggle Theme">
+          <i class="fa-solid fa-sun"></i>
+        </button>
+
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===================================================================
+       1. HERO / FIRST PAGE (MOST IMPORTANT)
+       =================================================================== -->
+  <header class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        <span>Open to Data Analyst Opportunities</span>
+      </div>
+
+      <h1 class="hero-title">Shivani Singh</h1>
+
+      <div class="hero-subtitle-wrap">
+        <span class="hero-subtitle">Data Analyst</span>
+        <span style="color: var(--text-muted); font-size: 1.4rem;">|</span>
+        <span class="role-typing" id="role-typewriter" style="font-size: 1.25rem; font-weight: 600;">Data Analytics</span>
+      </div>
+
+      <p class="hero-text">
+        Translating intricate database queries, sales numbers, and corporate metrics into clear visual intelligence, dashboards, and data-driven business decisions.
+      </p>
+
+      <div class="hero-actions">
+        <!-- Primary CTAs -->
+        <div class="cta-buttons">
+          <a href="#projects" class="btn btn-primary">
+            <i class="fa-solid fa-arrow-down"></i> View Projects
+          </a>
+          <a href="#contact" class="btn btn-secondary">
+            <i class="fa-solid fa-envelope"></i> Contact Me
+          </a>
         </div>
-    </nav>
 
-    <!-- Main Hero Banner (First Page) -->
-    <header>
-        <div class="hero-content">
-            <h1 class="hero-title">Shivani Singh</h1>
-            <div class="hero-subtitle">Data Analyst</div>
-            <p class="hero-text">Translating intricate database queries and corporate metrics into clear, visual intelligence that supports effective executive decisions.</p>
-            
-            <div class="social-buttons">
-                <!-- LinkedIn Button -->
-                <a href="https://www.linkedin.com/in/shivani-singh-a659a73b3/" target="_blank" rel="noopener noreferrer" class="btn btn-linkedin">
-                    <i class="fa-brands fa-linkedin-in"></i> LinkedIn
-                </a>
-                <!-- GitHub Button -->
-                <a href="https://github.com/Shivanisingh710" target="_blank" rel="noopener noreferrer" class="btn btn-github">
-                    <i class="fa-brands fa-github"></i> GitHub
-                </a>
-                <!-- Email Button -->
-                <a href="mailto:shivanisingh112014@gmail.com" class="btn btn-email">
-                    <i class="fa-solid fa-envelope"></i> Email Me
-                </a>
-            </div>
+        <!-- Clickable Social & Resume Buttons -->
+        <div class="social-buttons">
+          <a href="https://www.linkedin.com/in/shivani-singh-a659a73b3/?isSelfProfile=true" target="_blank" rel="noopener noreferrer" class="btn-social btn-linkedin" title="LinkedIn Profile">
+            <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+          </a>
+          <a href="https://github.com/Shivanisingh710" target="_blank" rel="noopener noreferrer" class="btn-social btn-github" title="GitHub Profile">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+          <a href="mailto:shivanisingh112014@gmail.com" class="btn-social btn-email" title="Send Email">
+            <i class="fa-solid fa-envelope"></i> Email Me
+          </a>
+          <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-social btn-resume-pill" download="Shivani_Singh_Resume.pdf" title="Download Resume">
+            <i class="fa-solid fa-file-pdf"></i> Resume.pdf
+          </a>
         </div>
-        <div class="hero-image-container">
-            <div class="hero-image">
-                <!-- Using your profile picture stored as 'profile.png' -->
-                <img src="profile.png" alt="Shivani Singh Profile Picture" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop'">
-            </div>
-        </div>
-    </header>
+      </div>
+    </div>
 
-    <!-- About Section -->
-    <section id="about" class="section-container reveal">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-card">
-            <!-- PASTE YOUR CUSTOM ABOUT ME TEXT HERE -->
-            <!-- Note: You can edit or change the paragraph text below directly in your editor -->
-            <p class="about-text">
-                A Data Analytics enthusiast with a background in Agriculture and hands-on experience in SQL, Python, Power BI, Excel, Machine Learning, and data cleaning. Interested in transforming raw datasets into meaningful insights through analysis, visualization, and problem-solving. Built projects involving sales analysis, HR analytics, and used car market trends to strengthen analytical thinking and business understanding. Continuously learning and exploring ways to solve real-world problems using data.
-            </p>
-        </div>
-    </section>
+    <!-- Hero Image Container (Morphing Organic Shape from Reference Site) -->
+    <div class="hero-image-container">
+      <div class="hero-image">
+        <img 
+          src="profilepic.jpg" 
+          alt="Shivani Singh Profile Picture" 
+          id="hero-profile-pic"
+          onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop';"
+        >
+      </div>
+    </div>
+  </header>
 
-    <!-- Interactive Skills Dashboard Area -->
-    <section id="skills" class="section-container reveal">
-        <h2 class="section-title">Core Competencies</h2>
-        <div class="skills-grid">
-        <div class="skill-dropdown">
-            <div class="skill-card">
-                <i class="fa-regular fa-file-excel"></i>
-                <span>Advanced Excel</span>
-            </div>
-            <div class="dropdown-content">
-                <a href="https://github.com/Shivanisingh710/E-commerce-Sales-and-Discount-Analysis-Excel"
-                   target="_blank">
-                    E-commerce Sales & Discount Analysis
-                </a>
+  <!-- ===================================================================
+       2. ABOUT ME SECTION (Clean & Grounded)
+       =================================================================== -->
+  <section id="about" class="section-container reveal">
+    <h2 class="section-title">
+      <i class="fa-regular fa-user"></i> About Me
+    </h2>
 
-                <a href="https://github.com/Shivanisingh710/hr-analytics-dashboard-excel"
-                   target="_blank">
-                    HR Analytics Dashboard
-                </a>
-         </div>   
-     </div>
-     <div class="skill-dropdown">
+    <div class="about-card">
+      <p class="about-text">
+        A Data Analytics enthusiast with a background in Agriculture and hands-on experience in SQL, Python, Power BI, Advanced Excel, Machine Learning, Deep Learning, and Generative AI. Interested in transforming raw datasets into meaningful insights through analysis, visualization, and problem-solving.
+      </p>
+      <p class="about-text" style="margin-bottom: 0;">
+        Built end-to-end projects involving sales analysis, HR analytics, used car market trends, customer conversion funnels, and risk modeling to strengthen analytical thinking and business understanding. Continuously learning and exploring ways to solve real-world problems using data.
+      </p>
 
-          <div class="skill-card">
-              <i class="fa-solid fa-database"></i>
-              <span>SQL / Querying</span>
+      <div class="about-highlights">
+        <div class="highlight-item">
+          <div class="highlight-icon">
+            <i class="fa-solid fa-chart-line"></i>
           </div>
-
-          <div class="dropdown-content">
-              <a href="https://github.com/Shivanisingh710/SQL-food-delivery-analysis"
-                 target="_blank">
-                  SQL Food Delivery Analysis
-              </a>
+          <div class="highlight-content">
+            <h4>Data Analytics & BI</h4>
+            <p>Exploratory data analysis, KPI reporting, and executive dashboard design.</p>
           </div>
-
-     </div>
-            <div class="skill-card">
-                <i class="fa-solid fa-python"></i>
-                <span>Python</span>
-            </div>
-            <div class="skill-card">
-                <i class="fa-solid fa-chart-column"></i>
-                <span>Power BI</span>
-            </div>
-                <div class="skill-card">
-                <i class="fa-solid fa-gears"></i>
-                <span>Data Wrangling</span>
-            </div>
         </div>
-    </section>
 
-    <!-- Projects Grid Section -->
-    <section id="projects" class="section-container reveal">
-        <h2 class="section-title">Projects</h2>
-        <div class="projects-grid">
-            
-            <!-- Project 1 -->
-            <div class="project-card">
-                <div class="project-image">
-                    <!-- High-quality relevant Unsplash image representing corporate HR Analysis -->
-                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=600&auto=format&fit=crop" alt="HR Analytics Dashboard">
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">HR Analytics Dashboard</h3>
-                    <p class="project-description">An interactive dashboard providing visual transparency over employee attrition metrics, standard HR KPIs, and department-level resource allocation trends.</p>
-                    <div class="project-tags">
-                        <span class="tag">Excel</span>
-                        <span class="tag">Dashboard Design</span>
-                        <span class="tag">HR Metrics</span>
-                    </div>
-                    <a href="https://github.com/Shivanisingh710/hr-analytics-dashboard-excel" target="_blank" rel="noopener noreferrer" class="project-btn">
-                        <i class="fa-brands fa-github"></i> Source Code
-                    </a>
-                </div>
-            </div>
-
-            <!-- Project 2 -->
-            <div class="project-card">
-                <div class="project-image">
-                    <!-- High-quality relevant Unsplash image representing E-commerce Sales/Graph metrics -->
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop" alt="E-commerce Sales and Discount Analysis Dashboard">
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">E-commerce Sales & Discount Analysis</h3>
-                    <p class="project-description">Analyzed transactional behavior to observe pricing trends, seasonal margin impacts, and how strategic promotional discounting affected net sales margins.</p>
-                    <div class="project-tags">
-                        <span class="tag">Excel</span>
-                        <span class="tag">Sales Intelligence</span>
-                        <span class="tag">Discount Impact</span>
-                    </div>
-                    <a href="https://github.com/Shivanisingh710/E-commerce-Sales-and-Discount-Analysis-Excel" target="_blank" rel="noopener noreferrer" class="project-btn">
-                        <i class="fa-brands fa-github"></i> Source Code
-                    </a>
-                </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="project-card">
-                <div class="project-image">
-                    <!-- High-quality relevant Unsplash image representing Used Cars Pricing/Evaluation -->
-                    <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=600&auto=format&fit=crop" alt="Cars24 Used Car Pricing Market Trend Analysis">
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Cars24 Used Car Pricing Analysis</h3>
-                    <p class="project-description">Exploratory data study evaluating resale dynamics for used cars, mapping vehicle deprecation lines against odometer readings, model years, and fuel configurations.</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Pricing Models</span>
-                        <span class="tag">Automotive Analytics</span>
-                    </div>
-                    <a href="https://github.com/Shivanisingh710/Cars24-Used-Car-Pricing-Market-Trend-Analysis" target="_blank" rel="noopener noreferrer" class="project-btn">
-                        <i class="fa-brands fa-github"></i> Source Code
-                    </a>
-                </div>
-            </div>
-
+        <div class="highlight-item">
+          <div class="highlight-icon">
+            <i class="fa-solid fa-database"></i>
+          </div>
+          <div class="highlight-content">
+            <h4>SQL & Database Querying</h4>
+            <p>Relational modeling, CTEs, joins, and window functions.</p>
+          </div>
         </div>
-    </section>
 
-    <!-- Footer Area -->
-    <footer id="contact">
-        <div class="footer-container">
-            <h2 class="footer-title">Let's Connect</h2>
-            <p class="footer-text">I am highly receptive to introductory conversations or project-based queries. You can find me across any of the platforms below.</p>
-            
-            <div class="footer-socials">
-                <a href="https://www.linkedin.com/in/shivani-singh-a659a73b3/" target="_blank" rel="noopener noreferrer" class="btn btn-linkedin" aria-label="LinkedIn">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-                <a href="https://github.com/Shivanisingh710" target="_blank" rel="noopener noreferrer" class="btn btn-github" aria-label="GitHub">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-                <a href="mailto:shivanisingh112014@gmail.com" class="btn btn-email" aria-label="Email">
-                    <i class="fa-solid fa-envelope"></i>
-                </a>
-            </div>
-            <p class="copyright">&copy; <span id="year"></span> Shivani Singh. All Rights Reserved.</p>
+        <div class="highlight-item">
+          <div class="highlight-icon">
+            <i class="fa-solid fa-code"></i>
+          </div>
+          <div class="highlight-content">
+            <h4>Python & Machine Learning</h4>
+            <p>Data cleaning, web scraping, predictive modeling, and NLP.</p>
+          </div>
         </div>
-    </footer>
 
-    <!-- Core Interactive Functionality -->
-    <script>
-        // Synchronously set copyright year
-        document.getElementById('year').textContent = new Date().getFullYear();
+        <div class="highlight-item">
+          <div class="highlight-icon">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <div class="highlight-content">
+            <h4>Gen AI & Automation</h4>
+            <p>AI-assisted text classification and automated feedback processing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        // High-fidelity Light/Dark Theme Switcher
-        const themeToggle = document.getElementById('theme-toggle');
-        const icon = themeToggle.querySelector('i');
+  <!-- ===================================================================
+       4. SKILLS SECTION (7 REQUIRED SKILLS + INTERACTIVE DROPDOWNS)
+       =================================================================== -->
+  <section id="skills" class="section-container reveal">
+    <h2 class="section-title">
+      <i class="fa-solid fa-brain"></i> Core Competencies
+    </h2>
+    <p class="section-subtitle-text">
+      Hover over cards to see relevant projects and applied tools.
+    </p>
 
-        // Check local storage for persistent preference
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            icon.classList.replace('fa-moon', 'fa-sun');
-        }
+    <div class="skills-grid">
+      <!-- 1. Advance Excel (with Dropdown) -->
+      <div class="skill-dropdown">
+        <div class="skill-card">
+          <span class="skill-badge-mini">Projects</span>
+          <i class="fa-regular fa-file-excel"></i>
+          <span>Advance Excel</span>
+        </div>
+        <div class="dropdown-content">
+          <a href="https://github.com/Shivanisingh710/E-commerce-Sales-and-Discount-Analysis-Excel" target="_blank" rel="noopener noreferrer">
+            <span>E-commerce Sales & Discount Analysis</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+          <a href="https://github.com/Shivanisingh710/hr-analytics-dashboard-excel" target="_blank" rel="noopener noreferrer">
+            <span>HR Analytics Dashboard</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
 
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            if (currentTheme === 'dark') {
-                document.documentElement.removeAttribute('data-theme');
-                localStorage.setItem('theme', 'light');
-                icon.classList.replace('fa-sun', 'fa-moon');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-                icon.classList.replace('fa-moon', 'fa-sun');
-            }
-        });
+      <!-- 2. SQL (with Dropdown) -->
+      <div class="skill-dropdown">
+        <div class="skill-card">
+          <span class="skill-badge-mini">Projects</span>
+          <i class="fa-solid fa-database"></i>
+          <span>SQL</span>
+        </div>
+        <div class="dropdown-content">
+          <a href="https://github.com/Shivanisingh710/SQL-food-delivery-analysis" target="_blank" rel="noopener noreferrer">
+            <span>SQL Food Delivery Analysis</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+          <a href="https://github.com/Shivanisingh710/Customer-Conversion-Funnel-Analysis" target="_blank" rel="noopener noreferrer">
+            <span>Conversion Funnel Analysis</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+          <a href="https://github.com/Shivanisingh710/nexora-supply-chain-analytics" target="_blank" rel="noopener noreferrer">
+            <span>Nexora Supply Chain Analytics</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
 
-        // Intersection Observer for scroll-reveal animations
-        const revealElements = document.querySelectorAll('.reveal');
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -50px 0px'
-        };
+      <!-- 3. Python (with Dropdown) -->
+      <div class="skill-dropdown">
+        <div class="skill-card">
+          <span class="skill-badge-mini">Projects</span>
+          <i class="fa-brands fa-python"></i>
+          <span>Python</span>
+        </div>
+        <div class="dropdown-content">
+          <a href="https://github.com/Shivanisingh710/Cars24-Used-Car-Webscrapping" target="_blank" rel="noopener noreferrer">
+            <span>Cars24 Used Car Web Scraping</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+          <a href="https://github.com/Shivanisingh710/ecommerce-return-abuse-and-wardrobing-risk-engine" target="_blank" rel="noopener noreferrer">
+            <span>E-commerce Return Abuse Risk</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+          <a href="https://github.com/Shivanisingh710/customer-feedback-automation" target="_blank" rel="noopener noreferrer">
+            <span>Customer Feedback Automation</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target); // Animates once on first view
-                }
-            });
-        }, observerOptions);
+      <!-- 4. Power BI -->
+      <div class="skill-dropdown">
+        <div class="skill-card">
+          <span class="skill-badge-mini">Projects</span>
+          <i class="fa-solid fa-chart-column"></i>
+          <span>Power BI</span>
+        </div>
+        <div class="dropdown-content">
+          <a href="https://github.com/Shivanisingh710/nexora-supply-chain-analytics" target="_blank" rel="noopener noreferrer">
+            <span>Nexora Supply Chain Dashboard</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+          <a href="https://github.com/Shivanisingh710/Customer-Conversion-Funnel-Analysis" target="_blank" rel="noopener noreferrer">
+            <span>Conversion Funnel Dashboard</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
 
-        revealElements.forEach(el => observer.observe(el));
-    </script>
+      <!-- 5. Machine Learning -->
+      <div class="skill-dropdown">
+        <div class="skill-card">
+          <span class="skill-badge-mini">Projects</span>
+          <i class="fa-solid fa-gears"></i>
+          <span>Machine Learning</span>
+        </div>
+        <div class="dropdown-content">
+          <a href="https://github.com/Shivanisingh710/ecommerce-return-abuse-and-wardrobing-risk-engine" target="_blank" rel="noopener noreferrer">
+            <span>Return Abuse Risk Engine</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+          <a href="https://github.com/Shivanisingh710/edtech-instructors-effectiveness-prediction-model" target="_blank" rel="noopener noreferrer">
+            <span>Instructor Effectiveness Model</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 6. Deep Learning -->
+      <div class="skill-card">
+        <i class="fa-solid fa-network-wired"></i>
+        <span>Deep Learning</span>
+      </div>
+
+      <!-- 7. Gen AI -->
+      <div class="skill-dropdown">
+        <div class="skill-card">
+          <span class="skill-badge-mini">Projects</span>
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <span>Gen AI</span>
+        </div>
+        <div class="dropdown-content">
+          <a href="https://github.com/Shivanisingh710/customer-feedback-automation" target="_blank" rel="noopener noreferrer">
+            <span>Customer Feedback Automation (NLP/AI)</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       3. PROJECTS SECTION (ALL 9 GITHUB PROJECTS)
+       =================================================================== -->
+  <section id="projects" class="section-container reveal">
+    <h2 class="section-title">
+      <i class="fa-solid fa-folder-open"></i> Projects
+    </h2>
+
+    <div class="projects-filter-bar">
+      <!-- Search Box -->
+      <div class="project-search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="project-search-input" placeholder="Search by name, technology (e.g. SQL, Excel)...">
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="filter-pills-wrap">
+        <button class="filter-pill active" data-filter="all">All Projects (9)</button>
+        <button class="filter-pill" data-filter="ml">Machine Learning & AI</button>
+        <button class="filter-pill" data-filter="bi">BI & Dashboards</button>
+        <button class="filter-pill" data-filter="sql">SQL & Analytics</button>
+        <button class="filter-pill" data-filter="excel">Excel Analytics</button>
+      </div>
+    </div>
+
+    <!-- Projects Grid Container -->
+    <div class="projects-grid" id="projects-grid">
+      <!-- Dynamically populated from script.js -->
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       5. EDUCATION SECTION (3 CREDENTIALS)
+       =================================================================== -->
+  <section id="education" class="section-container reveal">
+    <h2 class="section-title">
+      <i class="fa-solid fa-graduation-cap"></i> Education
+    </h2>
+
+    <div class="education-timeline">
+      <!-- Item 1: Imarticus Learning -->
+      <div class="education-card">
+        <div class="education-header">
+          <h3 class="institution-name">Imarticus Learning</h3>
+          <span class="edu-badge">Postgraduate Program</span>
+        </div>
+        <div class="degree-title">Postgraduation Program in Data Science and Analytics with GenAI</div>
+        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+          Comprehensive data science and analytics program covering statistical analysis, machine learning algorithms, generative AI concepts, business intelligence dashboarding, and practical project implementations.
+        </p>
+        <div class="coursework-container">
+          <div class="coursework-title">
+            <i class="fa-solid fa-book-open"></i> Relevant Coursework
+          </div>
+          <div class="coursework-pills">
+            <span class="course-pill">Advanced Excel</span>
+            <span class="course-pill">SQL</span>
+            <span class="course-pill">Python</span>
+            <span class="course-pill">Statistics</span>
+            <span class="course-pill">Power BI</span>
+            <span class="course-pill">Machine Learning</span>
+            <span class="course-pill">Deep Learning</span>
+            <span class="course-pill">Gen AI</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2: NEC Institute -->
+      <div class="education-card">
+        <div class="education-header">
+          <h3 class="institution-name">NEC Institute of IT & Management</h3>
+          <span class="edu-badge">Advanced Diploma</span>
+        </div>
+        <div class="degree-title">Adv Diploma in Computer Application (ADCA)</div>
+        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+          Foundational diploma training covering computer applications, spreadsheet operations, office tools, basic web programming, and computational workflows.
+        </p>
+        <div class="coursework-container">
+          <div class="coursework-title">
+            <i class="fa-solid fa-book-open"></i> Relevant Coursework
+          </div>
+          <div class="coursework-pills">
+            <span class="course-pill">MS Excel</span>
+            <span class="course-pill">MS Word</span>
+            <span class="course-pill">MS PowerPoint</span>
+            <span class="course-pill">Basic HTML</span>
+            <span class="course-pill">Windows OS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3: SDSUV -->
+      <div class="education-card">
+        <div class="education-header">
+          <h3 class="institution-name">Sri Dev Suman Uttarakhand University (SDSUV)</h3>
+          <span class="edu-badge">Bachelor Degree</span>
+        </div>
+        <div class="degree-title">Bachelor of Science (B.Sc.)</div>
+        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+          Undergraduate degree providing a quantitative scientific foundation in statistical principles, applied economics, survey sampling, and analytical problem-solving.
+        </p>
+        <div class="coursework-container">
+          <div class="coursework-title">
+            <i class="fa-solid fa-book-open"></i> Relevant Coursework
+          </div>
+          <div class="coursework-pills">
+            <span class="course-pill">Statistics</span>
+            <span class="course-pill">Computer Applications</span>
+            <span class="course-pill">General Economics</span>
+            <span class="course-pill">Survey & Sampling</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       CONTACT & FOOTER AREA (Referenced from Reference Site)
+       =================================================================== -->
+  <footer id="contact">
+    <div class="footer-container">
+      <h2 class="footer-title">Let's Connect</h2>
+      <p class="footer-text">
+        I am receptive to introductory conversations, full-time Data Analyst roles, or project-based queries. Feel free to connect across any channel below.
+      </p>
+
+      <div class="footer-socials">
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/shivani-singh-a659a73b3/?isSelfProfile=true" target="_blank" rel="noopener noreferrer" class="btn btn-linkedin" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+        </a>
+        <!-- GitHub -->
+        <a href="https://github.com/Shivanisingh710" target="_blank" rel="noopener noreferrer" class="btn btn-github" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i> GitHub
+        </a>
+        <!-- Email -->
+        <a href="mailto:shivanisingh112014@gmail.com" class="btn btn-email" aria-label="Email">
+          <i class="fa-solid fa-envelope"></i> Email Me
+        </a>
+        <!-- Resume -->
+        <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" download="Shivani_Singh_Resume.pdf" aria-label="Resume">
+          <i class="fa-solid fa-file-pdf"></i> Resume.pdf
+        </a>
+      </div>
+
+      <!-- Quick Copy Email Button -->
+      <div>
+        <button class="copy-email-strip" id="copy-email-btn" title="Copy email address to clipboard">
+          <i class="fa-regular fa-copy"></i>
+          <span>shivanisingh112014@gmail.com</span>
+          <span style="font-size: 0.8rem; opacity: 0.75;">(Click to Copy)</span>
+        </button>
+      </div>
+
+      <!-- Recruiter Quick Inquiry Box -->
+      <div class="recruiter-quick-box">
+        <h3>Direct Recruiter Message</h3>
+        <p>Send a quick note or interview inquiry directly to my inbox:</p>
+        <form id="recruiter-form">
+          <div class="recruiter-form-grid">
+            <input type="text" id="req-name" class="form-input" placeholder="Your Name" required>
+            <input type="text" id="req-company" class="form-input" placeholder="Company / Organization" required>
+          </div>
+          <div style="margin-bottom: 1rem;">
+            <input type="text" id="req-note" class="form-input" placeholder="Role or message (e.g. Data Analyst role at...)" required>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+            <i class="fa-regular fa-paper-plane"></i> Send Inquiry Email
+          </button>
+        </form>
+      </div>
+
+      <p class="copyright">&copy; <span id="year">2026</span> Shivani Singh. All Rights Reserved. Built with clean HTML, CSS, and JavaScript.</p>
+    </div>
+  </footer>
+
+  <!-- ===================================================================
+       PROJECT DETAIL INSPECTOR MODAL
+       =================================================================== -->
+  <div class="modal-overlay" id="project-modal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Project Details</h3>
+        <button class="modal-close" id="modal-close-btn" aria-label="Close modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Overview</h4>
+        <p id="modal-desc"></p>
+
+        <h4>Project Objective</h4>
+        <p id="modal-objective"></p>
+
+        <h4>Analytical Solution</h4>
+        <p id="modal-solution"></p>
+
+        <h4>Tools & Technologies</h4>
+        <div id="modal-tech" style="margin-top: 0.5rem; display: flex; flex-wrap: wrap; gap: 6px;"></div>
+      </div>
+      <div class="modal-footer">
+        <a href="#" id="modal-github-link" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          <i class="fa-brands fa-github"></i> View on GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
 </body>
 </html>
