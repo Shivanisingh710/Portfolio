@@ -21,7 +21,1335 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <style>
+/* ===================================================================
+   SHIVANI SINGH - DATA ANALYST PORTFOLIO
+   Clean, Modern, Elegant & Recruiter-Focused Design System
+   Directly referenced from https://shivanisingh710.github.io/Portfolio/
+   =================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg-color: #f8fafc;
+  --card-bg: #ffffff;
+  --card-hover: #ffffff;
+  --text-color: #0f172a;
+  --text-muted: #475569;
+  --text-light: #64748b;
+  --primary-color: #4f46e5;
+  --primary-light: #e0e7ff;
+  --primary-hover: #4338ca;
+  --border-color: #e2e8f0;
+  --shadow-color: rgba(79, 70, 229, 0.06);
+  --gradient-accent: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+  --transition-speed: 0.3s;
+  --container-max: 1200px;
+}
+
+[data-theme="dark"] {
+  --bg-color: #090d16;
+  --card-bg: #111827;
+  --card-hover: #172033;
+  --text-color: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-light: #64748b;
+  --primary-color: #6366f1;
+  --primary-light: #1e1b4b;
+  --primary-hover: #818cf8;
+  --border-color: #1f2937;
+  --shadow-color: rgba(0, 0, 0, 0.45);
+  --gradient-accent: linear-gradient(135deg, #6366f1 0%, #22d3ee 100%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.65;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .logo {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  color: var(--text-color);
+  letter-spacing: -0.01em;
+}
+
+/* Scroll Progress Bar */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--gradient-accent);
+  width: 0%;
+  z-index: 2000;
+  transition: width 0.1s linear;
+}
+
+/* Glassmorphism Navigation */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color var(--transition-speed), border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+[data-theme="dark"] nav {
+  background-color: rgba(9, 13, 22, 0.85);
+}
+
+nav.scrolled {
+  box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+.nav-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.55rem;
+  font-weight: 800;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-dot {
+  color: #06b6d4;
+  -webkit-text-fill-color: initial;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color var(--transition-speed);
+  position: relative;
+  padding: 4px 0;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--primary-color);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-accent);
+  transition: width var(--transition-speed);
+  border-radius: 2px;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+.nav-cta-resume {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.25rem;
+  border-radius: 50px;
+  background: var(--gradient-accent);
+  color: #ffffff !important;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.nav-cta-resume:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(79, 70, 229, 0.3);
+}
+
+.nav-cta-resume::after {
+  display: none !important;
+}
+
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color var(--transition-speed), transform var(--transition-speed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--primary-light);
+  transform: scale(1.1);
+}
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* ===================================================================
+   HERO / FIRST PAGE (MOST IMPORTANT)
+   =================================================================== */
+header.hero {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 5rem 2rem 4rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3.5rem;
+  min-height: calc(100vh - 80px);
+  position: relative;
+}
+
+.hero-content {
+  flex: 1.2;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 50px;
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  border: 1px solid rgba(79, 70, 229, 0.15);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  display: inline-block;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  letter-spacing: -1px;
+}
+
+.hero-subtitle-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1.25rem;
+}
+
+.hero-subtitle {
+  font-size: 1.85rem;
+  font-weight: 700;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.role-typing {
+  color: var(--primary-color);
+  border-right: 2px solid var(--primary-color);
+  padding-right: 4px;
+  animation: cursorBlink 0.8s infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: var(--primary-color); }
+}
+
+.hero-text {
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  margin-bottom: 2.2rem;
+  max-width: 580px;
+  line-height: 1.7;
+}
+
+/* Call to action & social buttons */
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all var(--transition-speed);
+  cursor: pointer;
+  border: 1.5px solid transparent;
+}
+
+.btn-primary {
+  background: var(--gradient-accent);
+  color: white;
+  box-shadow: 0 6px 18px rgba(79, 70, 229, 0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(79, 70, 229, 0.35);
+}
+
+.btn-secondary {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px var(--shadow-color);
+}
+
+.social-buttons {
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btn-social {
+  padding: 0.65rem 1.25rem;
+  border-radius: 50px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: all var(--transition-speed);
+}
+
+.btn-linkedin {
+  background-color: #0077b5;
+  color: white;
+}
+
+.btn-linkedin:hover {
+  background-color: #005582;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 119, 181, 0.3);
+}
+
+.btn-github {
+  background-color: #24292e;
+  color: white;
+}
+
+[data-theme="dark"] .btn-github {
+  background-color: #1f2937;
+  border: 1.5px solid var(--border-color);
+}
+
+.btn-github:hover {
+  background-color: #000000;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-email {
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  border: 1.5px solid var(--primary-color);
+}
+
+.btn-email:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(79, 70, 229, 0.2);
+}
+
+.btn-resume-pill {
+  background-color: transparent;
+  border: 1.5px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.btn-resume-pill:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background-color: var(--primary-light);
+  transform: translateY(-3px);
+}
+
+/* Hero Image Container (Morphing Animation from Reference) */
+.hero-image-container {
+  flex: 0.85;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-image {
+  width: 320px;
+  height: 320px;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  overflow: hidden;
+  box-shadow: 0 20px 45px var(--shadow-color);
+  background: var(--gradient-accent);
+  animation: morphing 8s infinite ease-in-out;
+  border: 4px solid var(--card-bg);
+  transition: border var(--transition-speed);
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.hero-image:hover img {
+  transform: scale(1.06);
+}
+
+@keyframes morphing {
+  0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+  50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+  100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+}
+
+/* ===================================================================
+   GENERIC SECTION CONTAINERS & HEADINGS
+   =================================================================== */
+.section-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+.section-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.section-title i {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+}
+
+.section-title::after {
+  content: '';
+  flex-grow: 1;
+  height: 1.5px;
+  background-color: var(--border-color);
+  margin-left: 0.5rem;
+}
+
+.section-subtitle-text {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-top: -1.8rem;
+  margin-bottom: 2.5rem;
+  max-width: 650px;
+}
+
+/* ===================================================================
+   ABOUT ME SECTION
+   =================================================================== */
+#about {
+  border-top: 1px solid var(--border-color);
+}
+
+.about-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 2.5rem 3rem;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  transition: border-color var(--transition-speed), transform var(--transition-speed);
+}
+
+.about-card:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-3px);
+}
+
+.about-text {
+  color: var(--text-color);
+  font-size: 1.12rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.about-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.highlight-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--primary-light);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.highlight-content h4 {
+  font-size: 0.98rem;
+  margin-bottom: 3px;
+}
+
+.highlight-content p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ===================================================================
+   SKILLS SECTION (7 REQUIRED SKILLS + DROPDOWNS)
+   =================================================================== */
+#skills {
+  border-top: 1px solid var(--border-color);
+}
+
+.skills-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.skill-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.skill-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  border-radius: 16px;
+  text-align: center;
+  font-weight: 700;
+  transition: all var(--transition-speed);
+  box-shadow: 0 4px 15px var(--shadow-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  justify-content: center;
+  width: 220px;
+  height: 140px;
+  cursor: pointer;
+  position: relative;
+}
+
+.skill-card i {
+  font-size: 2.2rem;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.skill-card span {
+  font-size: 1.05rem;
+  color: var(--text-color);
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.12);
+}
+
+.skill-badge-mini {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0.7rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--primary-color);
+  background: var(--primary-light);
+  padding: 2px 7px;
+  border-radius: 50px;
+}
+
+/* Dropdown style referenced from reference site */
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  min-width: 280px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  display: none;
+  z-index: 100;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.dropdown-content a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 18px;
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background-color var(--transition-speed);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-content a:hover {
+  background: var(--primary-light);
+  color: var(--primary-color);
+}
+
+.dropdown-content a i {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.skill-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* ===================================================================
+   PROJECTS SECTION (ALL 9 GITHUB PROJECTS)
+   =================================================================== */
+#projects {
+  border-top: 1px solid var(--border-color);
+}
+
+/* Filter buttons & search bar */
+.projects-filter-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+  align-items: center;
+}
+
+.project-search-box {
+  width: 100%;
+  max-width: 440px;
+  position: relative;
+}
+
+.project-search-box input {
+  width: 100%;
+  padding: 0.75rem 1.2rem 0.75rem 2.8rem;
+  border-radius: 50px;
+  border: 1.5px solid var(--border-color);
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  font-family: inherit;
+  font-size: 0.92rem;
+  outline: none;
+  transition: all var(--transition-speed);
+}
+
+.project-search-box input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 15px rgba(79, 70, 229, 0.15);
+}
+
+.project-search-box i {
+  position: absolute;
+  left: 1.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+.filter-pills-wrap {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filter-pill {
+  padding: 0.55rem 1.25rem;
+  border-radius: 50px;
+  background-color: var(--card-bg);
+  border: 1.5px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+}
+
+.filter-pill:hover {
+  color: var(--text-color);
+  border-color: var(--primary-color);
+}
+
+.filter-pill.active {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+}
+
+/* Projects Grid (Referenced directly from shivanisingh710.github.io) */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+}
+
+.project-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed);
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(79, 70, 229, 0.12);
+  border-color: var(--primary-color);
+}
+
+.project-image {
+  height: 210px;
+  overflow: hidden;
+  position: relative;
+  background: var(--primary-light);
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.08);
+}
+
+.project-badge-corner {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background-color: rgba(17, 24, 39, 0.85);
+  color: #22d3ee;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 50px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.project-content {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.project-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+  line-height: 1.4;
+  color: var(--text-color);
+}
+
+.project-description {
+  color: var(--text-muted);
+  font-size: 0.98rem;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+  line-height: 1.6;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.6rem;
+}
+
+.tag {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 0.3rem 0.85rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all var(--transition-speed);
+}
+
+.project-card:hover .tag {
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  border-color: transparent;
+}
+
+.project-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.project-btn {
+  padding: 0.6rem 1.25rem;
+  font-size: 0.9rem;
+  border-radius: 50px;
+  background-color: transparent;
+  border: 1.5px solid var(--border-color);
+  color: var(--text-color);
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all var(--transition-speed);
+}
+
+.project-card:hover .project-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: transparent;
+}
+
+.project-quick-view-btn {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.project-quick-view-btn:hover {
+  text-decoration: underline;
+}
+
+/* ===================================================================
+   EDUCATION SECTION (3 REQUIRED CREDENTIALS)
+   =================================================================== */
+#education {
+  border-top: 1px solid var(--border-color);
+}
+
+.education-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.education-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 2.2rem;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  transition: transform var(--transition-speed), border-color var(--transition-speed);
+  position: relative;
+}
+
+.education-card:hover {
+  transform: translateX(6px);
+  border-color: var(--primary-color);
+}
+
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 0.6rem;
+}
+
+.institution-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.edu-badge {
+  font-size: 0.8rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+}
+
+.degree-title {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.coursework-container {
+  margin-top: 1.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.coursework-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.coursework-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.course-pill {
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.3rem 0.85rem;
+  border-radius: 50px;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  transition: all var(--transition-speed);
+}
+
+.education-card:hover .course-pill {
+  border-color: rgba(79, 70, 229, 0.25);
+}
+
+/* ===================================================================
+   CONTACT & RECRUITER INQUIRY
+   =================================================================== */
+#contact {
+  border-top: 1px solid var(--border-color);
+  background-color: var(--card-bg);
+  padding: 5rem 2rem 3rem;
+  transition: background-color var(--transition-speed);
+}
+
+.footer-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.footer-text {
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.1rem;
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.copy-email-strip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.75rem 1.6rem;
+  background-color: var(--bg-color);
+  border: 1.5px dashed var(--primary-color);
+  border-radius: 50px;
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-bottom: 3.5rem;
+  transition: all var(--transition-speed);
+}
+
+.copy-email-strip:hover {
+  background-color: var(--primary-light);
+  transform: translateY(-2px);
+}
+
+/* Quick Recruiter Email Box */
+.recruiter-quick-box {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: left;
+  margin-bottom: 3rem;
+  box-shadow: 0 10px 25px var(--shadow-color);
+}
+
+.recruiter-quick-box h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.recruiter-quick-box p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+}
+
+.recruiter-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color var(--transition-speed);
+}
+
+.form-input:focus {
+  border-color: var(--primary-color);
+}
+
+.copyright {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 2.5rem;
+}
+
+/* ===================================================================
+   MODAL INSPECTOR & TOAST
+   =================================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(9, 13, 22, 0.75);
+  backdrop-filter: blur(8px);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-speed);
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-box {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  max-width: 640px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+  transform: translateY(20px);
+  transition: transform var(--transition-speed);
+}
+
+.modal-overlay.active .modal-box {
+  transform: translateY(0);
+}
+
+.modal-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  font-size: 1.35rem;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: var(--text-color);
+}
+
+.modal-body {
+  padding: 2rem;
+}
+
+.modal-body h4 {
+  font-size: 0.95rem;
+  color: var(--primary-color);
+  margin-bottom: 0.4rem;
+  margin-top: 1.2rem;
+}
+
+.modal-body h4:first-child {
+  margin-top: 0;
+}
+
+.modal-body p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.modal-footer {
+  padding: 1.2rem 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+/* Toast */
+.toast-box {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--primary-color);
+  padding: 0.9rem 1.4rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px var(--shadow-color);
+  font-size: 0.92rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transform: translateX(120%);
+  transition: transform 0.35s ease;
+  z-index: 4000;
+}
+
+.toast-box.show {
+  transform: translateX(0);
+}
+
+/* Reveal Animation on Scroll (from reference) */
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===================================================================
+   RESPONSIVE DESIGN RULES
+   =================================================================== */
+@media (max-width: 968px) {
+  header.hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 3rem;
+    padding-top: 3.5rem;
+    justify-content: center;
+    min-height: auto;
+  }
+
+  .hero-subtitle-wrap {
+    justify-content: center;
+  }
+
+  .hero-image {
+    width: 260px;
+    height: 260px;
+  }
+
+  .hero-title {
+    font-size: 2.75rem;
+  }
+
+  .hero-text {
+    margin: 0 auto 2.2rem;
+  }
+
+  .cta-buttons,
+  .social-buttons {
+    justify-content: center;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-links.mobile-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.5rem 2rem;
+    box-shadow: 0 10px 25px var(--shadow-color);
+    gap: 1.25rem;
+  }
+
+  .mobile-toggle {
+    display: block;
+  }
+
+  .recruiter-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
 </head>
 <body>
 
@@ -532,6 +1860,471 @@
   </div>
 
   <!-- JavaScript -->
-  <script src="script.js"></script>
+  <script>
+/**
+ * SHIVANI SINGH - DATA ANALYST PORTFOLIO
+ * Clean, lightweight, and recruiter-focused interactive logic
+ * Reference: https://shivanisingh710.github.io/Portfolio/
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initTypewriter();
+  initScrollProgress();
+  initProjects();
+  initProjectModal();
+  initContact();
+  initMobileMenu();
+  initScrollReveal();
+});
+
+/* ===================================================================
+   1. LIGHT / DARK THEME TOGGLE (Persistent)
+   =================================================================== */
+function initTheme() {
+  const themeToggle = document.getElementById('theme-toggle');
+  if (!themeToggle) return;
+
+  const icon = themeToggle.querySelector('i');
+  const savedTheme = localStorage.getItem('shivani_theme') || 'dark';
+
+  if (savedTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    if (icon) {
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
+    }
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+    if (icon) {
+      icon.classList.remove('fa-sun');
+      icon.classList.add('fa-moon');
+    }
+  }
+
+  themeToggle.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('shivani_theme', 'light');
+      if (icon) {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      }
+      showToast('Switched to Light Mode');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('shivani_theme', 'dark');
+      if (icon) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      }
+      showToast('Switched to Dark Mode');
+    }
+  });
+}
+
+/* ===================================================================
+   2. HERO ROLE TYPEWRITER
+   =================================================================== */
+function initTypewriter() {
+  const el = document.getElementById('role-typewriter');
+  if (!el) return;
+
+  const roles = [
+    'Data Analyst',
+    'Business Intelligence Enthusiast',
+    'SQL & Excel Specialist',
+    'Machine Learning & Gen AI Practitioner'
+  ];
+
+  let roleIdx = 0;
+  let charIdx = 0;
+  let isDeleting = false;
+  let speed = 90;
+
+  function type() {
+    const current = roles[roleIdx];
+    if (isDeleting) {
+      el.textContent = current.substring(0, charIdx - 1);
+      charIdx--;
+      speed = 45;
+    } else {
+      el.textContent = current.substring(0, charIdx + 1);
+      charIdx++;
+      speed = 90;
+    }
+
+    if (!isDeleting && charIdx === current.length) {
+      speed = 2000;
+      isDeleting = true;
+    } else if (isDeleting && charIdx === 0) {
+      isDeleting = false;
+      roleIdx = (roleIdx + 1) % roles.length;
+      speed = 400;
+    }
+
+    setTimeout(type, speed);
+  }
+
+  type();
+}
+
+/* ===================================================================
+   3. SCROLL PROGRESS
+   =================================================================== */
+function initScrollProgress() {
+  const progressBar = document.getElementById('scroll-progress');
+  const nav = document.querySelector('nav');
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = (scrollTop / scrollHeight) * 100;
+
+    if (progressBar) progressBar.style.width = progress + '%';
+    if (nav) {
+      if (scrollTop > 30) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    }
+  }, { passive: true });
+}
+
+/* ===================================================================
+   4. PROJECTS (ALL 9 GITHUB REPOSITORIES)
+   =================================================================== */
+const projectsData = [
+  {
+    id: 1,
+    title: 'Nexora Supply Chain Analytics',
+    category: ['all', 'bi', 'sql'],
+    githubUrl: 'https://github.com/Shivanisingh710/nexora-supply-chain-analytics',
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600&auto=format&fit=crop',
+    tech: ['Python', 'SQL', 'Power BI', 'Supply Chain'],
+    badge: 'Supply Chain',
+    desc: 'Analyzed end-to-end supply chain logistics data to track inventory turnover, vendor fulfillment lead times, and warehouse stock availability.',
+    objective: 'Gain visibility into supplier lead-time slippage, evaluate safety stock levels, and monitor logistics order cycles.',
+    solution: 'Cleaned and modeled transactional logistics tables using Python and SQL, creating an interactive Power BI dashboard to track order fulfillment metrics.'
+  },
+  {
+    id: 2,
+    title: 'E-commerce Return Abuse & Wardrobing Risk Engine',
+    category: ['all', 'ml', 'ai'],
+    githubUrl: 'https://github.com/Shivanisingh710/ecommerce-return-abuse-and-wardrobing-risk-engine',
+    image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=600&auto=format&fit=crop',
+    tech: ['Python', 'Machine Learning', 'Scikit-learn', 'Risk Analytics'],
+    badge: 'Fraud Analytics',
+    desc: 'Built a classification model and anomaly detection system to identify patterns of return abuse and wardrobing behavior in e-commerce orders.',
+    objective: 'Detect serial returners and identify high-risk return behaviors while minimizing friction for legitimate customers.',
+    solution: 'Engineered behavioral features around return frequencies and purchase intervals, training supervised ML classifiers in Python Scikit-learn.'
+  },
+  {
+    id: 3,
+    title: 'Cars24 Used Car Web Scraping & Analysis',
+    category: ['all', 'analytics'],
+    githubUrl: 'https://github.com/Shivanisingh710/Cars24-Used-Car-Webscrapping',
+    image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=600&auto=format&fit=crop',
+    tech: ['Python', 'BeautifulSoup', 'Selenium', 'Pandas'],
+    badge: 'Web Scraping',
+    desc: 'Scraped used car listings across multiple cities using Python, followed by data cleaning and exploratory analysis of vehicle pricing trends.',
+    objective: 'Extract structured pricing data from dynamic web pages to observe how mileage, model year, and transmission impact resale prices.',
+    solution: 'Constructed an automated scraping pipeline with Selenium and BeautifulSoup, performing comprehensive exploratory data analysis with Pandas and Seaborn.'
+  },
+  {
+    id: 4,
+    title: 'Customer Feedback Automation',
+    category: ['all', 'ml', 'ai'],
+    githubUrl: 'https://github.com/Shivanisingh710/customer-feedback-automation',
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600&auto=format&fit=crop',
+    tech: ['Python', 'NLP', 'Gen AI', 'Power BI'],
+    badge: 'NLP & AI',
+    desc: 'Automated customer review processing using NLP and text classification to categorize incoming feedback and detect customer sentiment trends.',
+    objective: 'Transform unstructured customer feedback and reviews into structured categories for faster customer support response.',
+    solution: 'Built an NLP pipeline in Python with text cleaning, sentiment scoring, and Gen AI categorization, displayed via an interactive dashboard.'
+  },
+  {
+    id: 5,
+    title: 'EdTech Instructors Effectiveness Prediction Model',
+    category: ['all', 'ml'],
+    githubUrl: 'https://github.com/Shivanisingh710/edtech-instructors-effectiveness-prediction-model',
+    image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=600&auto=format&fit=crop',
+    tech: ['Python', 'Scikit-learn', 'Data Analysis'],
+    badge: 'Machine Learning',
+    desc: 'Developed a predictive machine learning model to evaluate instructor performance metrics and identify factors affecting student engagement.',
+    objective: 'Understand which teaching indicators and engagement metrics are most correlated with student satisfaction and course completion.',
+    solution: 'Executed exploratory hypothesis testing and trained supervised regression and classification models in Scikit-learn with feature importance analysis.'
+  },
+  {
+    id: 6,
+    title: 'Customer Conversion Funnel Analysis',
+    category: ['all', 'bi', 'sql'],
+    githubUrl: 'https://github.com/Shivanisingh710/Customer-Conversion-Funnel-Analysis',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop',
+    tech: ['SQL', 'Python', 'Power BI', 'Funnel Analysis'],
+    badge: 'Conversion Rate',
+    desc: 'Performed conversion funnel analysis to identify drop-off stages in user checkout journeys and recommend improvements to increase conversion rates.',
+    objective: 'Identify key transition friction points between product views, cart additions, and order completion.',
+    solution: 'Calculated stage-by-stage drop-off percentages using SQL window functions and modeled conversion trends in Power BI.'
+  },
+  {
+    id: 7,
+    title: 'SQL Food Delivery Operations Analysis',
+    category: ['all', 'sql'],
+    githubUrl: 'https://github.com/Shivanisingh710/SQL-food-delivery-analysis',
+    image: 'https://images.unsplash.com/photo-1526367790999-0150786686a2?q=80&w=600&auto=format&fit=crop',
+    tech: ['SQL', 'Window Functions', 'CTEs', 'Relational DB'],
+    badge: 'Advanced SQL',
+    desc: 'Wrote complex SQL queries utilizing window functions, CTEs, and joins to analyze food delivery order trends, rider performance, and peak hours.',
+    objective: 'Evaluate delivery SLA compliance, peak-order latency, and customer ordering frequency across cities.',
+    solution: 'Structured relational queries using CTEs, DENSE_RANK, and LEAD/LAG window functions to produce clean summary metrics.'
+  },
+  {
+    id: 8,
+    title: 'E-commerce Sales & Discount Analysis (Excel)',
+    category: ['all', 'excel'],
+    githubUrl: 'https://github.com/Shivanisingh710/E-commerce-Sales-and-Discount-Analysis-Excel',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop',
+    tech: ['Excel', 'Sales Intelligence', 'Discount Impact'],
+    badge: 'Advanced Excel',
+    desc: 'Analyzed transactional sales data to evaluate how promotional discounts and pricing strategies affected net sales margins and revenue.',
+    objective: 'Determine whether discounts drove sustainable volume gains or eroded profit margins.',
+    solution: 'Utilized nested formulas (XLOOKUP, INDEX-MATCH), pivot tables, and dynamic charts to present discount sensitivity clearly.'
+  },
+  {
+    id: 9,
+    title: 'HR Analytics Dashboard (Excel)',
+    category: ['all', 'excel', 'bi'],
+    githubUrl: 'https://github.com/Shivanisingh710/hr-analytics-dashboard-excel',
+    image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=600&auto=format&fit=crop',
+    tech: ['Excel', 'Dashboard Design', 'HR Metrics'],
+    badge: 'HR Dashboard',
+    desc: 'Created an interactive Excel dashboard providing visual transparency over employee attrition metrics, standard HR KPIs, and department-level trends.',
+    objective: 'Provide HR leaders with a clear view of department turnover rates, tenure distribution, and satisfaction indicators.',
+    solution: 'Cleaned employee dataset, built normalized pivot tables with interactive slicers, and designed a clear executive KPI summary.'
+  }
+];
+
+function initProjects() {
+  const container = document.getElementById('projects-grid');
+  const filterPills = document.querySelectorAll('.filter-pill');
+  const searchInput = document.getElementById('project-search-input');
+
+  let activeCategory = 'all';
+  let searchTerm = '';
+
+  function render() {
+    if (!container) return;
+
+    const filtered = projectsData.filter(p => {
+      const matchCat = activeCategory === 'all' || p.category.includes(activeCategory);
+      const matchSearch = searchTerm === '' ||
+        p.title.toLowerCase().includes(searchTerm) ||
+        p.desc.toLowerCase().includes(searchTerm) ||
+        p.tech.some(t => t.toLowerCase().includes(searchTerm));
+      return matchCat && matchSearch;
+    });
+
+    if (filtered.length === 0) {
+      container.innerHTML = `
+        <div style="grid-column: 1/-1; text-align: center; padding: 3rem 1rem; color: var(--text-muted);">
+          <i class="fa-solid fa-magnifying-glass" style="font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
+          <p>No projects match your search criteria. Try a different term or clear filters.</p>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = filtered.map(p => `
+      <div class="project-card reveal active">
+        <div class="project-image">
+          <img src="${p.image}" alt="${p.title}" loading="lazy">
+          <span class="project-badge-corner">${p.badge}</span>
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">${p.title}</h3>
+          <p class="project-description">${p.desc}</p>
+          <div class="project-tags">
+            ${p.tech.map(t => `<span class="tag">${t}</span>`).join('')}
+          </div>
+          <div class="project-card-footer">
+            <a href="${p.githubUrl}" target="_blank" rel="noopener noreferrer" class="project-btn">
+              <i class="fa-brands fa-github"></i> Source Code
+            </a>
+            <button class="project-quick-view-btn" onclick="openModal(${p.id})">
+              Details <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  filterPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      filterPills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      activeCategory = pill.getAttribute('data-filter');
+      render();
+    });
+  });
+
+  searchInput?.addEventListener('input', (e) => {
+    searchTerm = e.target.value.trim().toLowerCase();
+    render();
+  });
+
+  render();
+}
+
+/* ===================================================================
+   5. PROJECT DETAILS MODAL
+   =================================================================== */
+function initProjectModal() {
+  const modal = document.getElementById('project-modal');
+  const closeBtn = document.getElementById('modal-close-btn');
+
+  window.openModal = (id) => {
+    const project = projectsData.find(p => p.id === id);
+    if (!project || !modal) return;
+
+    document.getElementById('modal-title').textContent = project.title;
+    document.getElementById('modal-desc').textContent = project.desc;
+    document.getElementById('modal-objective').textContent = project.objective;
+    document.getElementById('modal-solution').textContent = project.solution;
+
+    const stackWrap = document.getElementById('modal-tech');
+    if (stackWrap) {
+      stackWrap.innerHTML = project.tech.map(t => `<span class="tag" style="background: var(--primary-light); color: var(--primary-color); border: none;">${t}</span>`).join(' ');
+    }
+
+    const githubLink = document.getElementById('modal-github-link');
+    if (githubLink) {
+      githubLink.href = project.githubUrl;
+    }
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  function closeModal() {
+    modal?.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  closeBtn?.addEventListener('click', closeModal);
+
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal?.classList.contains('active')) {
+      closeModal();
+    }
+  });
+}
+
+/* ===================================================================
+   6. CONTACT & EMAIL COPY
+   =================================================================== */
+function initContact() {
+  const copyBtn = document.getElementById('copy-email-btn');
+  const email = 'shivanisingh112014@gmail.com';
+
+  copyBtn?.addEventListener('click', () => {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(() => {
+        showToast('Email copied to clipboard!');
+      }).catch(() => {
+        copyFallback(email);
+      });
+    } else {
+      copyFallback(email);
+    }
+  });
+
+  function copyFallback(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+    showToast('Email copied to clipboard!');
+  }
+
+  const form = document.getElementById('recruiter-form');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('req-name')?.value.trim();
+    const company = document.getElementById('req-company')?.value.trim() || 'Organization';
+    const note = document.getElementById('req-note')?.value.trim();
+
+    const subject = encodeURIComponent(`Opportunity Inquiry from ${name} (${company})`);
+    const body = encodeURIComponent(`Hi Shivani,\n\nI reviewed your portfolio and would like to connect.\n\nName: ${name}\nCompany: ${company}\n\nNote:\n${note}\n\nBest regards,\n${name}`);
+
+    showToast('Opening your email client...');
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+  });
+}
+
+function showToast(msg) {
+  let toast = document.getElementById('toast-box');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'toast-box';
+    toast.className = 'toast-box';
+    document.body.appendChild(toast);
+  }
+
+  toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color: #10b981;"></i> <span>${msg}</span>`;
+  toast.classList.add('show');
+
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 3500);
+}
+
+/* ===================================================================
+   7. MOBILE NAVIGATION DRAWER
+   =================================================================== */
+function initMobileMenu() {
+  const btn = document.getElementById('mobile-toggle');
+  const links = document.getElementById('nav-links');
+
+  btn?.addEventListener('click', () => {
+    links?.classList.toggle('mobile-open');
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      links?.classList.remove('mobile-open');
+    });
+  });
+}
+
+/* ===================================================================
+   8. SCROLL REVEAL (from Reference Site)
+   =================================================================== */
+function initScrollReveal() {
+  const revealElements = document.querySelectorAll('.reveal');
+  const observerOptions = {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  revealElements.forEach(el => observer.observe(el));
+}
+
+</script>
 </body>
 </html>
